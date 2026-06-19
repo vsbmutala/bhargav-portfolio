@@ -18,7 +18,7 @@ export default function Contact() {
                 hello@bhargav.dev
               </a>
               <a
-                href="https://linkedin.com/in/bhargav"
+                href={process.env.NEXT_PUBLIC_LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-lg hover:text-primary transition-colors"
@@ -27,22 +27,13 @@ export default function Contact() {
                 LinkedIn
               </a>
               <a
-                href="https://github.com/bhargav"
+                href={process.env.NEXT_PUBLIC_GITHUB}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-lg hover:text-primary transition-colors"
               >
                 <span className="w-2 h-2 rounded-full bg-primary"></span>
                 GitHub
-              </a>
-              <a
-                href="https://twitter.com/bhargav"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-lg hover:text-primary transition-colors"
-              >
-                <span className="w-2 h-2 rounded-full bg-primary"></span>
-                Twitter
               </a>
             </div>
           </div>
