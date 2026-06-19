@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bhargav's Portfolio
+
+A modern, responsive portfolio website built with Next.js 16, TypeScript, and Tailwind CSS.
+
+## Project Structure
+
+```
+bhargav-portfolio/
+├── app/                      # Next.js app directory
+│   ├── layout.tsx           # Root layout with Navigation and Footer
+│   ├── page.tsx             # Home page with section components
+│   └── globals.css          # Global styles and CSS variables
+├── components/              # React components
+│   ├── sections/           # Page section components
+│   │   ├── Hero.tsx        # Hero section with introduction
+│   │   ├── About.tsx       # About section with skills
+│   │   ├── Projects.tsx    # Featured projects showcase
+│   │   └── Contact.tsx     # Contact form and social links
+│   └── ui/                 # Reusable UI components
+│       ├── Navigation.tsx  # Fixed navigation bar
+│       └── Footer.tsx      # Footer component
+├── constants/              # Application constants
+│   ├── projects.ts         # Project data
+│   └── social.ts           # Social media links
+├── types/                  # TypeScript type definitions
+│   └── index.ts           # Shared types
+├── utils/                  # Utility functions
+│   └── cn.ts              # Class name utility (clsx + tailwind-merge)
+├── hooks/                  # Custom React hooks (reserved for future use)
+├── lib/                    # Third-party library configurations (reserved)
+└── public/                 # Static assets
+```
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Fonts**: Geist Sans & Geist Mono (via next/font)
+- **Utilities**: clsx, tailwind-merge
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Update Personal Information
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Edit `components/sections/Hero.tsx` to change your name and intro
+- Edit `components/sections/About.tsx` to update your bio and skills
+- Edit `constants/projects.ts` to add your projects
+- Edit `constants/social.ts` to update social media links
+- Edit `app/layout.tsx` to change metadata (title, description)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Styling
 
-## Deploy on Vercel
+- Modify `app/globals.css` to customize the color scheme
+- The project uses CSS variables for theming with dark mode support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The easiest way to deploy is using [Vercel](https://vercel.com):
+
+```bash
+vercel deploy
+```
+
+## License
+
+MIT
