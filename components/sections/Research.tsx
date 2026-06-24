@@ -1,61 +1,71 @@
 export default function Research() {
   return (
-    <section id="research" className="py-20 px-6 bg-muted/30">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">Research Experience</h2>
-        <div className="space-y-6">
-          <div className="p-6 rounded-lg border border-border bg-card">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-              <h3 className="text-xl font-semibold">Graduate Research Assistant</h3>
-              <span className="text-muted-foreground text-sm">January 2024 - December 2024</span>
+    <section id="research" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">Research & Publications</h2>
+        <p className="text-muted-foreground mb-12 max-w-2xl">
+          Academic research in AI/ML with focus on healthcare applications, published in international peer-reviewed conferences.
+        </p>
+        
+        <div className="mb-16">
+          <h3 className="text-xl font-semibold mb-4">Research Focus</h3>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            Artificial Intelligence • Natural Language Processing • Healthcare Informatics • Deep Learning • Large Language Models
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            My research investigates how speech, language, and machine learning techniques can support early detection of neurodegenerative diseases. 
+            By combining deep learning architectures, language embeddings, and synthetic data generation, I develop scalable approaches for cognitive impairment screening.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-xl font-semibold mb-6">Publications</h3>
+          <div className="space-y-6">
+            <div className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow">
+              <h4 className="text-lg font-semibold mb-3">
+                Enhancing Alzheimer's Disease Detection Using LLM-Generated Synthetic Data and Multi-Level Embeddings
+              </h4>
+              <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-3">
+                <span className="font-medium text-accent">IJCNN 2025</span>
+                <span>•</span>
+                <span>Rome, Italy</span>
+                <span>•</span>
+                <span className="font-mono text-xs">DOI: 10.1109/IJCNN64981.2025.11229368</span>
+              </div>
+              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                Investigated GPT-generated synthetic data and multi-level language embeddings for Alzheimer's detection from spontaneous speech transcripts.
+              </p>
+              <a
+                href="https://ieeexplore.ieee.org/document/11229368"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline font-medium text-sm"
+              >
+                View Publication →
+              </a>
             </div>
-            <p className="text-muted-foreground mb-4">Kennesaw State University</p>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium mb-2">Thesis Focus</h4>
-                <p className="text-muted-foreground">
-                  Alzheimer's disease detection using spontaneous speech recognition, deep learning, and natural language processing. 
-                  Developed hybrid models combining data augmentation, spectrograms, and transcript-based analysis to enhance early diagnosis accuracy.
-                </p>
+
+            <div className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow">
+              <h4 className="text-lg font-semibold mb-3">
+                Enhancing Alzheimer's Diagnosis Through Spontaneous Speech Recognition: Deep Learning Approach with Data Augmentation
+              </h4>
+              <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-3">
+                <span className="font-medium text-accent">IEEE ISCC 2025</span>
+                <span>•</span>
+                <span className="font-mono text-xs">DOI: 10.1109/ISCC65549.2025.11325956</span>
               </div>
-              <div>
-                <h4 className="font-medium mb-2">Key Techniques</h4>
-                <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                  <li>Data augmentation for speech datasets</li>
-                  <li>Spectrogram-based audio analysis</li>
-                  <li>Multi-level embeddings for text processing</li>
-                  <li>Hybrid deep learning models</li>
-                  <li>LLM-generated synthetic data for training</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-medium mb-2">Resources & Tools</h4>
-                <p className="text-muted-foreground">
-                  Utilized KSU's High-Performance Computing (HPC) systems to overcome hardware limitations and significantly improve research efficiency.
-                  Worked with ADReSS 2020 Challenge dataset for automatic Alzheimer's detection through spontaneous speech analysis.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-medium mb-2">Faculty Mentor</h4>
-                <p className="text-muted-foreground">Dr. Seyedamin Pouriyeh</p>
-              </div>
+              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                Developed deep learning framework with spectrogram-based speech analysis and data augmentation for early Alzheimer's detection.
+              </p>
+              <a
+                href="https://ieeexplore.ieee.org/document/11325956"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline font-medium text-sm"
+              >
+                View Publication →
+              </a>
             </div>
-          </div>
-          <div className="p-6 rounded-lg border border-border bg-card">
-            <h4 className="font-medium mb-3">Research Impact</h4>
-            <p className="text-muted-foreground mb-4">
-              This research offers non-invasive and cost-effective methods for early Alzheimer's diagnosis by analyzing subtle changes in language, 
-              fluency, and speech patterns. It enables identification of cognitive decline at earlier stages than traditional clinical assessments, 
-              potentially leading to earlier interventions and better patient outcomes.
-            </p>
-            <a
-              href="https://campus.kennesaw.edu/colleges-departments/graduate/about/news/apr-07-2025.php"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline font-medium"
-            >
-              Read KSU Feature Article →
-            </a>
           </div>
         </div>
       </div>

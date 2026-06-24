@@ -1,42 +1,44 @@
 const achievements = [
   {
-    title: "2024 Outstanding Student Award",
+    title: "Outstanding Student Award",
     organization: "Kennesaw State University",
-    college: "College of Computing and Software Engineering",
-    program: "Master of Science in Information Technology",
-    date: "November 19, 2024",
-    description: "Recognized as an outstanding student in the MS in Information Technology program for academic excellence and research contributions.",
-    icon: "🏆",
+    date: "Fall 2024",
+    description: "Recognized for academic excellence and research contributions in the Master of Science in Information Technology program.",
   },
   {
-    title: "3rd Place at KSU C-Day",
-    organization: "Kennesaw State University",
+    title: "3rd Place Research Presentation",
+    organization: "KSU C-Day",
     date: "2024",
-    description: "Awarded 3rd place for research presentation on Alzheimer's disease detection using speech and deep learning techniques at KSU's C-Day event.",
-    icon: "🎯",
+    description: "Awarded for research presentation on Alzheimer's disease detection using speech and deep learning techniques.",
+  },
+  {
+    title: "International Research Publications",
+    organization: "IJCNN & IEEE ISCC",
+    date: "2025",
+    description: "Published peer-reviewed research papers in international conferences focusing on AI and healthcare applications.",
   },
 ];
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-20 px-6 bg-muted/30">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-8">Achievements</h2>
-        <div className="grid md:grid-cols-2 gap-6">
+    <section id="achievements" className="py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">Recognition</h2>
+        <p className="text-muted-foreground mb-12 max-w-2xl">
+          Academic and professional achievements highlighting excellence in research and software engineering.
+        </p>
+        <div className="grid md:grid-cols-3 gap-8">
           {achievements.map((achievement, index) => (
             <div
               key={index}
               className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow"
             >
-              <div className="text-4xl mb-4">{achievement.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{achievement.title}</h3>
+              <h3 className="text-lg font-semibold mb-2">{achievement.title}</h3>
               <div className="space-y-1 text-sm text-muted-foreground mb-3">
                 <p>{achievement.organization}</p>
-                {achievement.college && <p>{achievement.college}</p>}
-                {achievement.program && <p>{achievement.program}</p>}
                 <p>{achievement.date}</p>
               </div>
-              <p className="text-muted-foreground">{achievement.description}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{achievement.description}</p>
             </div>
           ))}
         </div>
