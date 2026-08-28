@@ -11,7 +11,7 @@ export default function Hero() {
                 Available for opportunities
               </span>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+            <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
               Venkata Sai Bhargav Mutala
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
