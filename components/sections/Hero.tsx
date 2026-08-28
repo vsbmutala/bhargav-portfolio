@@ -12,7 +12,7 @@ export default function Hero() {
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
-              Bhargav Mutala
+              Venkata Sai Bhargav Mutala
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
               Full-Stack Software Engineer building scalable systems with modern web technologies and AI research expertise
