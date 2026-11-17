@@ -1,75 +1,196 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #0F172A;
-  --primary: #0F172A;
-  --primary-foreground: #FFFFFF;
-  --primary-hover: #1E293B;
-  --secondary: #64748B;
-  --secondary-foreground: #FFFFFF;
-  --accent: #3B82F6;
-  --accent-foreground: #FFFFFF;
-  --muted: #F8FAFC;
-  --muted-foreground: #64748B;
-  --card: #FFFFFF;
-  --card-foreground: #0F172A;
-  --border: #E2E8F0;
-  --ring: #3B82F6;
-  --success: #10B981;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0F172A;
-    --foreground: #F8FAFC;
-    --primary: #F8FAFC;
-    --primary-foreground: #0F172A;
-    --primary-hover: #E2E8F0;
-    --secondary: #94A3B8;
-    --secondary-foreground: #0F172A;
-    --accent: #60A5FA;
-    --accent-foreground: #0F172A;
-    --muted: #1E293B;
-    --muted-foreground: #94A3B8;
-    --card: #1E293B;
-    --card-foreground: #F8FAFC;
-    --border: #334155;
-    --ring: #60A5FA;
-    --success: #10B981;
-  }
+  color-scheme: dark;
+  --background: #08090a;
+  --surface: #0e0f11;
+  --surface-2: #141518;
+  --foreground: #f7f8f8;
+  --muted-foreground: #9a9fa8;
+  --subtle: #767b84;
+  --border: rgb(255 255 255 / 0.07);
+  --border-strong: rgb(255 255 255 / 0.13);
+  --accent: #8da2ff;
+  --accent-strong: #6d84ff;
+  --success: #4ade80;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  --color-subtle: var(--subtle);
   --color-border: var(--border);
-  --color-ring: var(--ring);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --color-success: var(--success);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+
+  --text-display-1: clamp(3rem, 1.6rem + 5.6vw, 5.75rem);
+  --text-display-1--line-height: 0.96;
+  --text-display-1--letter-spacing: -0.045em;
+  --text-display-2: clamp(2.25rem, 1.5rem + 2.8vw, 3.5rem);
+  --text-display-2--line-height: 1.04;
+  --text-display-2--letter-spacing: -0.035em;
+  --text-lead: clamp(1.125rem, 1rem + 0.45vw, 1.375rem);
+  --text-lead--line-height: 1.55;
+  --text-lead--letter-spacing: -0.012em;
+  --text-title: 1.25rem;
+  --text-title--line-height: 1.35;
+  --text-title--letter-spacing: -0.018em;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1;
+  --text-eyebrow--letter-spacing: 0.14em;
 }
 
 * {
   border-color: var(--border);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
 }
 
-html {
-  scroll-behavior: smooth;
+::selection {
+  background: rgb(141 162 255 / 0.3);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Hero backdrop: masked grid + soft accent glow */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+}
+
+.hero-glow {
+  background:
+    radial-gradient(40% 50% at 70% 10%, rgb(109 132 255 / 0.22), transparent 70%),
+    radial-gradient(30% 40% at 20% 0%, rgb(160 60 80 / 0.14), transparent 70%);
+}
+
+/* Cursor-follow spotlight used on cards */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 400ms var(--ease-out-expo);
+  background: radial-gradient(
+    420px circle at var(--x, 50%) var(--y, 50%),
+    rgb(141 162 255 / 0.09),
+    transparent 45%
+  );
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Hairline gradient top edge for elevated surfaces */
+.edge-highlight {
+  box-shadow:
+    inset 0 1px 0 0 rgb(255 255 255 / 0.06),
+    0 0 0 1px var(--border);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes ping-soft {
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.status-ping {
+  animation: ping-soft 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .enter {
+    opacity: 0;
+    animation: fade-up 900ms var(--ease-out-expo) forwards;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 800ms var(--ease-out-expo),
+      transform 800ms var(--ease-out-expo);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .status-ping {
+    animation: none;
+  }
 }

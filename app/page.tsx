@@ -8,7 +8,7 @@ import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main id="main" className="min-h-screen">
       <Hero />
       <Experience />
       <Skills />

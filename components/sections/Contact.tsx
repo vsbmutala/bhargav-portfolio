@@ -1,77 +1,66 @@
-import { socialLinks } from "@/constants/social";
+import { email, socialLinks } from "@/constants/social";
+import Reveal from "@/components/ui/Reveal";
+import CopyEmail from "@/components/ui/CopyEmail";
+import { ArrowUpRight, GitHub, LinkedIn, Mail } from "@/components/ui/Icons";
+
+const icons = { email: Mail, linkedin: LinkedIn, github: GitHub };
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
-        <p className="text-muted-foreground mb-12 max-w-2xl">
-          Open to opportunities in full-stack development, AI/ML engineering, and research positions.
-        </p>
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Get in Touch</h3>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              I'm interested in roles that leverage my expertise in full-stack development, AI/ML, and research. 
-              Feel free to reach out to discuss opportunities or collaborations.
-            </p>
-            <div className="space-y-4">
-              {socialLinks.map((link) => (
+    <section id="contact" className="px-6 py-28 md:px-8 md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <div className="edge-highlight relative overflow-hidden rounded-[2rem] bg-surface px-6 py-20 text-center md:px-16 md:py-28">
+            <div aria-hidden className="hero-glow pointer-events-none absolute inset-0 opacity-80" />
+            <div aria-hidden className="hero-grid pointer-events-none absolute inset-0 opacity-60" />
+
+            <div className="relative">
+              <p className="flex items-center justify-center gap-3 font-mono text-eyebrow uppercase text-subtle">
+                <span className="text-accent">06</span>
+                <span aria-hidden className="h-px w-8 bg-border-strong" />
+                Contact
+              </p>
+              <h2 className="mx-auto mt-8 max-w-[16ch] text-display-2 font-semibold text-foreground md:text-[4rem]">
+                Let&apos;s build something <span className="serif-accent">remarkable</span>.
+              </h2>
+              <p className="mx-auto mt-6 max-w-[52ch] text-lg text-muted-foreground">
+                Open to AI/ML engineering, applied data science and full-stack roles. If you&apos;re building something
+                ambitious, I&apos;d love to hear about it.
+              </p>
+
+              <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
-                  key={link.name}
-                  href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-3 text-muted-foreground hover:text-accent transition-colors"
+                  href={`mailto:${email}`}
+                  className="group inline-flex h-12 items-center gap-2 rounded-full bg-foreground pl-6 pr-5 text-[15px] font-medium text-background transition-all duration-300 hover:gap-3 hover:shadow-[0_0_0_4px_rgb(255_255_255/0.08)]"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                  {link.name}
+                  Start a conversation
+                  <ArrowUpRight className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
-              ))}
+                <CopyEmail />
+              </div>
+
+              <ul className="mt-12 flex items-center justify-center gap-2">
+                {socialLinks.map((link) => {
+                  const Icon = icons[link.icon];
+                  const external = link.href.startsWith("http");
+                  return (
+                    <li key={link.name}>
+                      <a
+                        href={link.href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noopener noreferrer" : undefined}
+                        aria-label={link.name}
+                        className="grid size-11 place-items-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-border-strong hover:text-foreground"
+                      >
+                        <Icon width={17} height={17} />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
-          <form className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                placeholder="Your name"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
-                placeholder="your@email.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={4}
-                className="w-full px-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all resize-none"
-                placeholder="Your message..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary-hover transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

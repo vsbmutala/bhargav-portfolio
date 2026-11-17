@@ -1,90 +1,42 @@
-const skillCategories = [
-  {
-    title: "Frontend Engineering",
-    skills: [
-      { name: "React.js", level: "Expert" },
-      { name: "Next.js", level: "Expert" },
-      { name: "TypeScript", level: "Expert" },
-      { name: "JavaScript (ES6+)", level: "Expert" },
-      { name: "Angular", level: "Advanced" },
-      { name: "Tailwind CSS", level: "Expert" },
-      { name: "Redux/RTK", level: "Advanced" },
-    ],
-  },
-  {
-    title: "Backend & Infrastructure",
-    skills: [
-      { name: "Node.js", level: "Expert" },
-      { name: "Express.js", level: "Expert" },
-      { name: "REST APIs", level: "Expert" },
-      { name: "GraphQL", level: "Intermediate" },
-      { name: "PostgreSQL", level: "Advanced" },
-      { name: "MongoDB", level: "Advanced" },
-      { name: "AWS", level: "Intermediate" },
-    ],
-  },
-  {
-    title: "AI & Machine Learning",
-    skills: [
-      { name: "Python", level: "Advanced" },
-      { name: "TensorFlow", level: "Advanced" },
-      { name: "PyTorch", level: "Intermediate" },
-      { name: "NLP", level: "Advanced" },
-      { name: "Deep Learning", level: "Advanced" },
-      { name: "LLMs", level: "Intermediate" },
-    ],
-  },
-  {
-    title: "Development Practices",
-    skills: [
-      { name: "Git/GitHub", level: "Expert" },
-      { name: "CI/CD", level: "Advanced" },
-      { name: "Docker", level: "Intermediate" },
-      { name: "Testing", level: "Advanced" },
-      { name: "Agile/Scrum", level: "Advanced" },
-      { name: "System Design", level: "Intermediate" },
-    ],
-  },
-];
-
-const getLevelColor = (level: string) => {
-  switch (level) {
-    case "Expert":
-      return "bg-accent text-white";
-    case "Advanced":
-      return "bg-accent/20 text-accent";
-    case "Intermediate":
-      return "bg-muted text-muted-foreground";
-    default:
-      return "bg-muted text-muted-foreground";
-  }
-};
+import { capabilities } from "@/constants/content";
+import SectionHeader from "@/components/ui/SectionHeader";
+import Reveal from "@/components/ui/Reveal";
+import Spotlight from "@/components/ui/Spotlight";
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Expertise</h2>
-        <p className="text-muted-foreground mb-12 max-w-2xl">
-          Proficient across the full stack with specialized expertise in modern JavaScript ecosystems and AI/ML applications.
-        </p>
-        <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category, index) => (
-            <div key={index} className="space-y-4">
-              <h3 className="text-xl font-semibold">{category.title}</h3>
-              <div className="space-y-3">
-                {category.skills.map((skill) => (
-                  <div key={skill.name} className="flex items-center justify-between">
-                    <span className="text-muted-foreground">{skill.name}</span>
-                    <span
-                      className={`px-3 py-1 text-xs font-medium rounded-full ${getLevelColor(skill.level)}`}
+    <section id="expertise" className="px-6 py-28 md:px-8 md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader
+          index="02"
+          eyebrow="Expertise"
+          title={
+            <>
+              From models to <span className="serif-accent">interfaces</span>
+            </>
+          }
+          description="Applied machine learning and data science on one side, production-grade full-stack engineering on the other — and the rare ability to ship both."
+        />
+
+        <div className="grid gap-4 md:grid-cols-2">
+          {capabilities.map((group, index) => (
+            <Reveal key={group.title} delay={index * 80}>
+              <Spotlight className="edge-highlight h-full rounded-3xl bg-surface p-8 md:p-10">
+                <p className="font-mono text-xs text-subtle">0{index + 1}</p>
+                <h3 className="mt-6 text-title font-semibold text-foreground">{group.title}</h3>
+                <p className="mt-2 max-w-[44ch] text-[15px] text-muted-foreground">{group.description}</p>
+                <ul className="mt-8 flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <li
+                      key={skill}
+                      className="rounded-full border border-border bg-background/60 px-3.5 py-1.5 text-[13px] font-medium text-foreground/90"
                     >
-                      {skill.level}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </Spotlight>
+            </Reveal>
           ))}
         </div>
       </div>

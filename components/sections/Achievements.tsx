@@ -1,45 +1,60 @@
-const achievements = [
-  {
-    title: "Outstanding Student Award",
-    organization: "Kennesaw State University",
-    date: "Fall 2024",
-    description: "Recognized for academic excellence and research contributions in the Master of Science in Information Technology program.",
-  },
-  {
-    title: "3rd Place Research Presentation",
-    organization: "KSU C-Day",
-    date: "2024",
-    description: "Awarded for research presentation on Alzheimer's disease detection using speech and deep learning techniques.",
-  },
-  {
-    title: "International Research Publications",
-    organization: "IJCNN & IEEE ISCC",
-    date: "2025",
-    description: "Published peer-reviewed research papers in international conferences focusing on AI and healthcare applications.",
-  },
-];
+import { achievements, education } from "@/constants/content";
+import SectionHeader from "@/components/ui/SectionHeader";
+import Reveal from "@/components/ui/Reveal";
+import Spotlight from "@/components/ui/Spotlight";
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Recognition</h2>
-        <p className="text-muted-foreground mb-12 max-w-2xl">
-          Academic and professional achievements highlighting excellence in research and software engineering.
-        </p>
-        <div className="grid md:grid-cols-3 gap-8">
-          {achievements.map((achievement, index) => (
-            <div
-              key={index}
-              className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-lg font-semibold mb-2">{achievement.title}</h3>
-              <div className="space-y-1 text-sm text-muted-foreground mb-3">
-                <p>{achievement.organization}</p>
-                <p>{achievement.date}</p>
+    <section id="recognition" className="px-6 py-28 md:px-8 md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader
+          index="05"
+          eyebrow="Recognition & Education"
+          title={
+            <>
+              Recognized for <span className="serif-accent">excellence</span>
+            </>
+          }
+        />
+
+        <div className="grid gap-4 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5 lg:row-span-3">
+            <Spotlight className="edge-highlight relative h-full overflow-hidden rounded-3xl bg-surface p-8 md:p-10">
+              <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-accent/10 blur-3xl" />
+              <p className="font-mono text-eyebrow uppercase text-subtle">Education</p>
+              <h3 className="mt-8 text-2xl font-semibold tracking-[-0.025em] text-foreground md:text-3xl">{education.degree}</h3>
+              <p className="mt-2 text-[15px] font-medium text-accent">{education.school}</p>
+              <p className="mt-1 font-mono text-[13px] text-subtle">{education.period}</p>
+
+              <div className="mt-10 flex items-baseline gap-3 border-t border-border pt-8">
+                <span className="text-5xl font-semibold tracking-[-0.04em] text-foreground tabular-nums">4.0</span>
+                <span className="text-sm text-muted-foreground">Cumulative GPA, out of 4.0</span>
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed">{achievement.description}</p>
-            </div>
+
+              <dl className="mt-8 space-y-6 text-[15px]">
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">Thesis</dt>
+                  <dd className="mt-2 text-foreground/90">{education.thesis}</dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">Coursework</dt>
+                  <dd className="mt-2 text-muted-foreground">{education.coursework.join(" · ")}</dd>
+                </div>
+              </dl>
+            </Spotlight>
+          </Reveal>
+
+          {achievements.map((item, index) => (
+            <Reveal key={item.title} delay={index * 80} className="lg:col-span-7">
+              <Spotlight className="edge-highlight h-full rounded-3xl bg-surface p-8">
+                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                  <h3 className="text-title font-semibold text-foreground">{item.title}</h3>
+                  <p className="shrink-0 font-mono text-[13px] text-subtle">{item.date}</p>
+                </div>
+                <p className="mt-1 text-[15px] font-medium text-accent">{item.organization}</p>
+                <p className="mt-4 max-w-[60ch] text-[15px] text-muted-foreground">{item.description}</p>
+              </Spotlight>
+            </Reveal>
           ))}
         </div>
       </div>

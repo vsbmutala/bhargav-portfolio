@@ -1,95 +1,111 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { cn } from "@/utils/cn";
+import { profile } from "@/constants/content";
+import { Close, Menu } from "@/components/ui/Icons";
+
+const navItems = [
+  { name: "Experience", href: "#experience" },
+  { name: "Expertise", href: "#expertise" },
+  { name: "Work", href: "#work" },
+  { name: "Research", href: "#research" },
+  { name: "Recognition", href: "#recognition" },
+];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    [...navItems.map((i) => i.href), "#contact"].forEach((href) => {
+      const el = document.querySelector(href);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { name: "Experience", href: "#experience" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Research", href: "#research" },
-    { name: "Awards", href: "#achievements" },
-    { name: "Contact", href: "#contact" },
-  ];
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold">
-          Bhargav
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
+      <nav
+        aria-label="Primary"
+        className={cn(
+          "mx-auto flex max-w-6xl items-center justify-between rounded-full py-2 pl-3 pr-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          isScrolled || isMobileMenuOpen
+            ? "border border-border bg-background/70 shadow-[0_8px_32px_-12px_rgb(0_0_0/0.6)] backdrop-blur-xl"
+            : "border border-transparent"
+        )}
+      >
+        <a href="#top" className="group flex items-center gap-3" aria-label={`${profile.name}, back to top`}>
+          <span className="grid size-8 place-items-center rounded-full bg-foreground font-mono text-[11px] font-semibold tracking-tight text-background transition-transform duration-500 group-hover:rotate-[-8deg]">
+            {profile.initials}
+          </span>
+          <span className="hidden text-[15px] font-medium tracking-[-0.01em] sm:block">{profile.name}</span>
         </a>
-        
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-6">
+
+        <ul className="hidden items-center gap-1 md:flex">
           {navItems.map((item) => (
             <li key={item.name}>
               <a
                 href={item.href}
-                className="text-sm font-medium hover:text-primary transition-colors"
+                aria-current={active === item.href ? "true" : undefined}
+                className={cn(
+                  "relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-300",
+                  active === item.href ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                )}
               >
+                {active === item.href && (
+                  <span aria-hidden className="absolute inset-0 -z-10 rounded-full bg-white/[0.06]" />
+                )}
                 {item.name}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="flex items-center gap-2">
+          <a
+            href="#contact"
+            className="hidden h-9 items-center rounded-full bg-foreground px-4 text-sm font-medium text-background transition-opacity hover:opacity-90 sm:inline-flex"
           >
-            {isMobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
-      </div>
+            Let&apos;s talk
+          </a>
+          <button
+            className="grid size-9 place-items-center rounded-full text-foreground hover:bg-white/[0.06] md:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <Close width={18} height={18} /> : <Menu width={18} height={18} />}
+          </button>
+        </div>
+      </nav>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border">
-          <ul className="flex flex-col py-4 px-6">
-            {navItems.map((item) => (
+        <div className="mx-auto mt-2 max-w-6xl rounded-3xl border border-border bg-background/90 p-2 backdrop-blur-xl md:hidden">
+          <ul className="flex flex-col">
+            {[...navItems, { name: "Contact", href: "#contact" }].map((item) => (
               <li key={item.name}>
                 <a
                   href={item.href}
-                  className="block py-2 text-sm font-medium hover:text-primary transition-colors"
+                  className="block rounded-2xl px-4 py-3 text-base font-medium text-muted-foreground transition-colors hover:bg-white/[0.04] hover:text-foreground"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -99,6 +115,6 @@ export default function Navigation() {
           </ul>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

@@ -1,73 +1,67 @@
+import { publications, researchFocus } from "@/constants/content";
+import SectionHeader from "@/components/ui/SectionHeader";
+import Reveal from "@/components/ui/Reveal";
+import { ArrowUpRight } from "@/components/ui/Icons";
+
 export default function Research() {
   return (
-    <section id="research" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Research & Publications</h2>
-        <p className="text-muted-foreground mb-12 max-w-2xl">
-          Academic research in AI/ML with focus on healthcare applications, published in international peer-reviewed conferences.
-        </p>
-        
-        <div className="mb-16">
-          <h3 className="text-xl font-semibold mb-4">Research Focus</h3>
-          <p className="text-muted-foreground mb-4 leading-relaxed">
-            Artificial Intelligence • Natural Language Processing • Healthcare Informatics • Deep Learning • Large Language Models
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            My research investigates how speech, language, and machine learning techniques can support early detection of neurodegenerative diseases. 
-            By combining deep learning architectures, language embeddings, and synthetic data generation, I develop scalable approaches for cognitive impairment screening.
-          </p>
-        </div>
+    <section id="research" className="px-6 py-28 md:px-8 md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeader
+          index="04"
+          eyebrow="AI Research"
+          title={
+            <>
+              Published, <span className="serif-accent">peer-reviewed</span>
+            </>
+          }
+          description="My research investigates how speech, language and machine learning can support early detection of neurodegenerative disease — combining deep learning, language embeddings and synthetic data for scalable cognitive screening."
+        />
 
-        <div>
-          <h3 className="text-xl font-semibold mb-6">Publications</h3>
-          <div className="space-y-6">
-            <div className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow">
-              <h4 className="text-lg font-semibold mb-3">
-                Enhancing Alzheimer's Disease Detection Using LLM-Generated Synthetic Data and Multi-Level Embeddings
-              </h4>
-              <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-3">
-                <span className="font-medium text-accent">IJCNN 2025</span>
-                <span>•</span>
-                <span>Rome, Italy</span>
-                <span>•</span>
-                <span className="font-mono text-xs">DOI: 10.1109/IJCNN64981.2025.11229368</span>
-              </div>
-              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                Investigated GPT-generated synthetic data and multi-level language embeddings for Alzheimer's detection from spontaneous speech transcripts.
-              </p>
-              <a
-                href="https://ieeexplore.ieee.org/document/11229368"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:underline font-medium text-sm"
-              >
-                View Publication →
-              </a>
-            </div>
+        <Reveal className="mb-12">
+          <ul className="flex flex-wrap gap-2" aria-label="Research areas">
+            {researchFocus.map((area) => (
+              <li key={area} className="rounded-full border border-border px-3.5 py-1.5 text-[13px] font-medium text-muted-foreground">
+                {area}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-            <div className="p-6 rounded-lg border border-border bg-card hover:shadow-lg transition-shadow">
-              <h4 className="text-lg font-semibold mb-3">
-                Enhancing Alzheimer's Diagnosis Through Spontaneous Speech Recognition: Deep Learning Approach with Data Augmentation
-              </h4>
-              <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-3">
-                <span className="font-medium text-accent">IEEE ISCC 2025</span>
-                <span>•</span>
-                <span className="font-mono text-xs">DOI: 10.1109/ISCC65549.2025.11325956</span>
-              </div>
-              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                Developed deep learning framework with spectrogram-based speech analysis and data augmentation for early Alzheimer's detection.
-              </p>
-              <a
-                href="https://ieeexplore.ieee.org/document/11325956"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:underline font-medium text-sm"
-              >
-                View Publication →
-              </a>
-            </div>
-          </div>
-        </div>
+        <ol className="border-t border-border">
+          {publications.map((pub, index) => (
+            <li key={pub.doi} className="border-b border-border">
+              <Reveal delay={index * 80}>
+                <a
+                  href={pub.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group -mx-4 grid gap-6 rounded-2xl px-4 py-10 transition-colors duration-500 hover:bg-white/[0.02] md:grid-cols-12 md:gap-10"
+                >
+                  <div className="md:col-span-3">
+                    <span className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 font-mono text-xs font-medium text-accent">
+                      {pub.venue}
+                    </span>
+                    {pub.location && <p className="mt-3 text-sm text-muted-foreground">{pub.location}</p>}
+                  </div>
+                  <div className="md:col-span-8">
+                    <h3 className="text-title font-medium text-foreground transition-colors md:text-[1.375rem] md:leading-snug">
+                      {pub.title}
+                    </h3>
+                    <p className="mt-4 max-w-[62ch] text-[15px] text-muted-foreground">{pub.summary}</p>
+                    <p className="mt-5 font-mono text-xs text-subtle">DOI {pub.doi}</p>
+                  </div>
+                  <div className="hidden md:col-span-1 md:flex md:justify-end">
+                    <span className="grid size-10 place-items-center rounded-full border border-border text-muted-foreground transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:border-accent/50 group-hover:text-accent">
+                      <ArrowUpRight />
+                    </span>
+                  </div>
+                  <span className="sr-only">(opens IEEE Xplore in a new tab)</span>
+                </a>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

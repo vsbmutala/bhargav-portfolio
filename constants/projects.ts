@@ -7,7 +7,7 @@ export const projects = [
     link: "#",
   },
   {
-    title: "EventManagement Platform",
+    title: "Event Management Platform",
     description: "Full-stack event management platform streamlining venue booking, event organization, and attendee registration with role-based access control.",
     impact: "Designed complete system from scratch supporting venue owners, event organizers, and attendees with automated booking workflows and real-time availability tracking",
     tech: ["Angular", "TypeScript", "Node.js", "Express.js", "MongoDB", "Google Maps API"],
