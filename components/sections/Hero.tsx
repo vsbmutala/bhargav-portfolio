@@ -6,7 +6,11 @@ const enter = (delay: number) => ({ animationDelay: `${delay}ms` });
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden px-6 pt-36 pb-20 md:px-8 md:pt-44 md:pb-28">
+    <section
+      id="top"
+      data-theme="dark"
+      className="theme-dark relative overflow-hidden bg-background px-6 pt-36 pb-20 md:px-8 md:pt-44 md:pb-28"
+    >
       <div aria-hidden className="hero-glow pointer-events-none absolute inset-0" />
       <div aria-hidden className="hero-grid pointer-events-none absolute inset-0" />
 
@@ -14,7 +18,7 @@ export default function Hero() {
         <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
             <div className="enter mb-10" style={enter(0)}>
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-border bg-white/[0.03] py-1.5 pl-3 pr-4 text-[13px] font-medium text-muted-foreground backdrop-blur">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-border bg-tint/[0.03] py-1.5 pl-3 pr-4 text-meta font-medium text-muted-foreground backdrop-blur">
                 <span className="relative flex size-2">
                   <span className="status-ping absolute inline-flex size-full rounded-full bg-success opacity-60" />
                   <span className="relative inline-flex size-2 rounded-full bg-success" />
@@ -39,14 +43,14 @@ export default function Hero() {
             <div className="enter mt-10 flex flex-wrap items-center gap-3" style={enter(280)}>
               <a
                 href="#work"
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-foreground pl-6 pr-5 text-[15px] font-medium text-background transition-all duration-300 hover:gap-3 hover:shadow-[0_0_0_4px_rgb(255_255_255/0.08)]"
+                className="group inline-flex h-12 items-center gap-2 rounded-full bg-foreground pl-6 pr-5 text-body-sm font-medium text-background transition-all duration-300 hover:gap-3 hover:shadow-[0_0_0_4px_rgb(255_255_255/0.08)]"
               >
                 View selected work
                 <ArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
               </a>
               <a
                 href="#contact"
-                className="inline-flex h-12 items-center rounded-full border border-border-strong px-6 text-[15px] font-medium text-foreground transition-colors duration-300 hover:bg-white/[0.05]"
+                className="inline-flex h-12 items-center rounded-full border border-border-strong px-6 text-body-sm font-medium text-foreground transition-colors duration-300 hover:bg-tint/[0.05]"
               >
                 Get in touch
               </a>
@@ -67,11 +71,11 @@ export default function Hero() {
                 />
                 <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 <figcaption className="absolute inset-x-3 bottom-3 rounded-2xl border border-white/10 bg-background/60 p-4 backdrop-blur-xl">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">Currently</p>
-                  <p className="mt-1.5 text-[15px] font-medium leading-snug text-foreground">
+                  <p className="font-mono text-eyebrow uppercase tracking-[0.14em] text-subtle">Currently</p>
+                  <p className="mt-1.5 text-body-sm font-medium leading-snug text-foreground">
                     {profile.current.title} at {profile.current.company}
                   </p>
-                  <p className="mt-1 flex items-center gap-1.5 text-[13px] text-muted-foreground">
+                  <p className="mt-1 flex items-center gap-1.5 text-meta text-muted-foreground">
                     <MapPin width={13} height={13} />
                     {profile.location}
                   </p>
@@ -87,8 +91,8 @@ export default function Hero() {
         >
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse justify-end bg-background/95 p-6 md:p-8">
-              <dt className="mt-3 text-sm text-muted-foreground">{stat.label}</dt>
-              <dd className="text-[2.5rem] font-semibold leading-none tracking-[-0.04em] text-foreground tabular-nums md:text-5xl">
+              <dt className="mt-3 text-meta text-muted-foreground">{stat.label}</dt>
+              <dd className="text-stat font-semibold text-foreground tabular-nums">
                 {stat.value}
               </dd>
             </div>
@@ -99,7 +103,7 @@ export default function Hero() {
           <p className="shrink-0 font-mono text-eyebrow uppercase text-subtle">Experience across</p>
           <ul className="flex flex-wrap gap-x-8 gap-y-3">
             {affiliations.map((name) => (
-              <li key={name} className="text-[15px] font-medium tracking-[-0.01em] text-muted-foreground/80">
+              <li key={name} className="text-body-sm font-medium text-muted-foreground/80">
                 {name}
               </li>
             ))}

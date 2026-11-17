@@ -20,7 +20,7 @@ export default function SectionHeader({
       </p>
       <h2 className="text-display-2 font-semibold text-foreground">{title}</h2>
       {description && (
-        <p className="mt-6 max-w-[58ch] text-lg leading-relaxed text-muted-foreground">{description}</p>
+        <p className="mt-6 max-w-[58ch] text-intro text-muted-foreground">{description}</p>
       )}
     </Reveal>
   );

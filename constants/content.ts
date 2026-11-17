@@ -10,7 +10,7 @@ export const profile = {
 
 export const stats = [
   { value: "2", label: "IEEE ML publications" },
-  { value: "15%", label: "Model accuracy gain over baseline" },
+  { value: "15%", label: "Accuracy gain over baseline" },
   { value: "95%", label: "Manual workload cut" },
   { value: "4.0", label: "Graduate GPA" },
 ];
@@ -73,11 +73,6 @@ export const experiences = [
 
 export const capabilities = [
   {
-    title: "Frontend Engineering",
-    description: "Pixel-precise, accessible interfaces and design systems that scale across teams.",
-    skills: ["React", "Next.js", "TypeScript", "JavaScript (ES6+)", "Angular", "Tailwind CSS", "Redux Toolkit"],
-  },
-  {
     title: "AI, ML & Data Science",
     description: "Applied deep learning, NLP and LLMs — from data pipelines and experiments to published, measurable results.",
     skills: [
@@ -93,6 +88,11 @@ export const capabilities = [
       "Speech & Spectrogram Analysis",
       "HPC Model Training",
     ],
+  },
+  {
+    title: "Frontend Engineering",
+    description: "Pixel-precise, accessible interfaces and design systems that scale across teams.",
+    skills: ["React", "Next.js", "TypeScript", "JavaScript (ES6+)", "Angular", "Tailwind CSS", "Redux Toolkit"],
   },
   {
     title: "Backend, Data & Cloud",

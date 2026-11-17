@@ -5,7 +5,7 @@ import Spotlight from "@/components/ui/Spotlight";
 
 export default function Skills() {
   return (
-    <section id="expertise" className="px-6 py-28 md:px-8 md:py-36">
+    <section id="expertise" className="px-6 py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           index="02"
@@ -22,14 +22,14 @@ export default function Skills() {
           {capabilities.map((group, index) => (
             <Reveal key={group.title} delay={index * 80}>
               <Spotlight className="edge-highlight h-full rounded-3xl bg-surface p-8 md:p-10">
-                <p className="font-mono text-xs text-subtle">0{index + 1}</p>
+                <p className="font-mono text-tag text-subtle">0{index + 1}</p>
                 <h3 className="mt-6 text-title font-semibold text-foreground">{group.title}</h3>
-                <p className="mt-2 max-w-[44ch] text-[15px] text-muted-foreground">{group.description}</p>
+                <p className="mt-2 max-w-[44ch] text-body-sm text-muted-foreground">{group.description}</p>
                 <ul className="mt-8 flex flex-wrap gap-2">
                   {group.skills.map((skill) => (
                     <li
                       key={skill}
-                      className="rounded-full border border-border bg-background/60 px-3.5 py-1.5 text-[13px] font-medium text-foreground/90"
+                      className="rounded-full border border-border bg-background/60 px-3.5 py-1.5 text-meta font-medium text-foreground/90"
                     >
                       {skill}
                     </li>

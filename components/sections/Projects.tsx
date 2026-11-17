@@ -8,7 +8,7 @@ import { cn } from "@/utils/cn";
 
 export default function Projects() {
   return (
-    <section id="work" className="px-6 py-28 md:px-8 md:py-36">
+    <section id="work" className="px-6 py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           index="03"
@@ -31,7 +31,7 @@ export default function Projects() {
                   <div className={cn("flex h-full flex-col p-8 md:p-10", featured && "lg:grid lg:grid-cols-12 lg:gap-12")}>
                     <div className={cn(featured && "lg:col-span-7")}>
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs text-subtle">
+                        <span className="font-mono text-tag text-subtle">
                           {String(index + 1).padStart(2, "0")} {featured && <span className="ml-2 text-accent">Featured</span>}
                         </span>
                         {hasLink && (
@@ -46,7 +46,7 @@ export default function Projects() {
                           </a>
                         )}
                       </div>
-                      <h3 className={cn("mt-8 font-semibold tracking-[-0.025em] text-foreground", featured ? "text-3xl md:text-4xl" : "text-2xl")}>
+                      <h3 className={cn("mt-8 font-semibold text-foreground", featured ? "text-headline" : "text-title-lg")}>
                         {project.title}
                       </h3>
                       <p className="mt-4 max-w-[58ch] text-muted-foreground">{project.description}</p>
@@ -54,8 +54,8 @@ export default function Projects() {
 
                     <div className={cn("mt-8 flex flex-1 flex-col justify-end", featured && "lg:col-span-5 lg:mt-0")}>
                       {project.impact && (
-                        <blockquote className="border-l border-accent/60 pl-5 text-[15px] leading-relaxed text-muted-foreground">
-                          <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">Impact</p>
+                        <blockquote className="border-l border-accent/60 pl-5 text-body-sm text-muted-foreground">
+                          <p className="mb-2 font-mono text-eyebrow uppercase tracking-[0.14em] text-subtle">Impact</p>
                           <Highlight text={project.impact} />
                         </blockquote>
                       )}
@@ -63,7 +63,7 @@ export default function Projects() {
                         {project.tech.map((tech) => (
                           <li
                             key={tech}
-                            className="rounded-full border border-border bg-background/60 px-3 py-1 font-mono text-xs text-muted-foreground"
+                            className="rounded-full border border-border bg-background/60 px-3 py-1 font-mono text-tag text-muted-foreground"
                           >
                             {tech}
                           </li>
